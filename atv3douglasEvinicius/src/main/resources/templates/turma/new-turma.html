@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastrar Turma</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	</head>
+	<body>
+        <div class="container">
+            <div class="row justify-content-center my-4">
+                <div class="col-10">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <div class="card-title">
+                            	<h1>Cadastrar Turma</h1>
+                            </div>
+                        </div>
+                        <form th:action="@{/turma}" th:object="${turma}" method="POST">
+	                        <div class="card-body">
+	                            <label for="num1">Nome</label>
+	                            <input th:field="*{nome}" class="form-control" type="text" id="nome" name="nome" value=""><br />
+	                            <label for="num2">Código</label>
+	                            <input th:field="*{codigo}" class="form-control" type="text" id="codigo" name="codigo" value=""><br />
+	                            <label for="num2">Ano</label>
+	                            <input th:field="*{ano}" class="form-control" type="number" id="ano" name="ano" value=""><br />
+	                            <label for="num2">Período</label>
+	                            <input th:field="*{periodo}" class="form-control" type="number" id="periodo" name="periodo" value=""><br />
+	                        </div>
+	                        <div class="card-footer text-right">
+								<input type="submit" class="btn btn-primary" value="Cadastrar">
+                        	</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

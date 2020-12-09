@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Turmas</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	</head>
+	<body>
+        <div class="container">
+            <div class="row justify-content-center my-4">
+                <div class="col-12">
+		        	<div>
+		        		<h1 class="text-center my-4" >Turmas</h1>
+		        		<table class="table">
+					    	<thead class="thead-dark">
+								<tr>
+									<th scope="col">Nome</th>
+									<th scope="col">Código</th>
+									<th scope="col">Ano</th>
+									<th scope="col">Período</th>									
+							    </tr>
+						     </thead>
+							 <tbody>
+							 	<tr th:each="turma : ${listaTurmas}">
+									<td th:text="${turma.nome}"></td>
+									<td th:text="${turma.codigo}"></td>
+									<td th:text="${turma.ano}"></td>
+									<td th:text="${turma.periodo}"></td>
+							  	</tr>
+					    	</tbody>
+						</table>
+						<a class="btn btn-primary" th:href="@{/turma/novo}">Nova turma</a>
+		        	</div>
+		        </div>
+            </div>
+        </div>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
