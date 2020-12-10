@@ -10,32 +10,31 @@
             <div class="row justify-content-center my-4">
                 <div class="col-12">
 		        	<div>
-		        		<h1 class="text-center my-4" >Turmas</h1>
+		        		<h1 class="text-center my-4" >Alunos</h1>
 		        		<table class="table">
 					    	<thead class="thead-dark">
 								<tr>
+									<th scope="col">Matricula</th>
 									<th scope="col">Nome</th>
-									<th scope="col">Código</th>
-									<th scope="col">Ano</th>
-									<th scope="col">Período</th>		
-									<th scope="col">Detalhar</th>							
+									<th scope="col">Ano de Nascimento</th>
+									<th scope="col">Telefone</th>
+									<th scope="col">Turma</th>									
+									<th scope="col">Ocorrências</th>
 							    </tr>
 						     </thead>
 							 <tbody>
-							 	<tr th:each="turma : ${listaTurmas}">
-									<td th:text="${turma.nome}"></td>
-									<td th:text="${turma.codigo}"></td>
-									<td th:text="${turma.ano}"></td>
-									<td th:text="${turma.periodo}"></td>
-									<td>
-										<form action="/aluno/listar-alunos">
-											<input type="submit" class="btn btn-primary" name="nomeTurma" th:value="${turma.nome}">
-										</form>
-									</td>
+							 	<tr th:each="aluno : ${listaAlunos}">
+									<!-- td th:text="${aluno.matricula}"></td> -->
+									<td th:text="${aluno.nome}"></td>
+									<td th:text="${aluno.anoNascimento}"></td>
+									<td th:text="${aluno.telefone}"></td>
+									<td th:text="${aluno.email}"></td>
+									<td th:text="${aluno.turma.nome}"></td>
+									<!--td th:text="${aluno.ocorrencia}"></td>-->
 							  	</tr>
 					    	</tbody>
 						</table>
-						<a class="btn btn-primary" th:href="@{/turma/novo}">Nova turma</a>
+						<a class="btn btn-primary" th:href="@{/turma}">Retornar</a>
 		        	</div>
 		        </div>
             </div>

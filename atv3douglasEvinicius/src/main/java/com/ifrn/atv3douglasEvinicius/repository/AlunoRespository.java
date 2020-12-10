@@ -8,10 +8,11 @@ import com.ifrn.atv3douglasEvinicius.model.Aluno;
 
 @Repository
 public class AlunoRespository {
+	private ArrayList<Aluno> listaAlunos;
 	
 	public AlunoRespository() {
 		TurmaRepository turmaRepository = new TurmaRepository();
-		ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
+		listaAlunos = new ArrayList<Aluno>();
 		
 		listaAlunos.add(new Aluno("20191","Junim", 2000, "1111-1111", "junim@gmail.com", turmaRepository.getTurmas().get(0)));
 		listaAlunos.add(new Aluno("20191","Pedim", 2001, "1111-2222", "pedim@gmail.com", turmaRepository.getTurmas().get(0)));
@@ -25,5 +26,19 @@ public class AlunoRespository {
 		listaAlunos.add(new Aluno("20191","Antonim", 2001, "2222-2222", "antonim@gmail.com", turmaRepository.getTurmas().get(3)));
 		listaAlunos.add(new Aluno("20191","Karlinha", 2003, "2222-3333", "karlinha@gmail.com", turmaRepository.getTurmas().get(3)));
 		listaAlunos.add(new Aluno("20191","Mariazinha", 2002, "2222-4444", "mariazinha@gmail.com", turmaRepository.getTurmas().get(3)));
+	}
+	
+	public ArrayList<Aluno> getAllAlunos(){
+		return this.listaAlunos;
+	}
+
+	public ArrayList<Aluno> getAlunosTurma(String nomeTurma) {
+		ArrayList<Aluno> listaDetalhada = new ArrayList<Aluno>();
+		for (Aluno aluno : listaAlunos) {
+			if(aluno.getTurma().getNome().equalsIgnoreCase(nomeTurma)) {
+				listaDetalhada.add(aluno);
+			}
+		}
+		return listaDetalhada;
 	}
 }
