@@ -14,6 +14,55 @@ public class Ocorrencia {
 		
 	}
 	
+	public Ocorrencia(String titulo, String descricao, Calendar dataHora, Aluno aluno, StatusOcorrencia status) {
+		super();
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.dataHora = dataHora;
+		this.aluno = aluno;
+		this.status = status;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Calendar getDataHora() {
+		return dataHora;
+	}
+
+	public void setDataHora(Calendar dataHora) {
+		this.dataHora = dataHora;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public StatusOcorrencia getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusOcorrencia status) {
+		this.status = status;
+	}
+
 	public void cadastrar() {
 		
 	}
@@ -30,6 +79,4 @@ public class Ocorrencia {
 		Ocorrencia ocorrencia = new Ocorrencia();
 		return ocorrencia;
 	}
-	
-	
 }

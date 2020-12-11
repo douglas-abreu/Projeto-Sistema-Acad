@@ -10,31 +10,26 @@
             <div class="row justify-content-center my-4">
                 <div class="col-12">
 		        	<div>
-		        		
-		        		<h1 class="text-center my-4" >Alunos</h1>
-		        		<p th:text="${turma}"></p>
+		        		<h1 class="text-center my-4" >Ocorrências</h1>
 		        		<table class="table">
 					    	<thead class="thead-dark">
 								<tr>
-									<th scope="col">Matricula</th>
-									<th scope="col">Nome</th>
-									<th scope="col">Ano de Nascimento</th>
-									<th scope="col">Telefone</th>
-									<th scope="col">E-mail</th>
-									<th scope="col">Turma</th>									
-									<th scope="col">Ocorrências</th>
+									<th scope="col">Título</th>
+									<th scope="col">Descrição</th>
+									<th scope="col">Data/hora</th>
+									<th scope="col">Aluno</th>
+									<th scope="col">Status</th>
 							    </tr>
 						     </thead>
 							 <tbody>
-							 	<tr th:each="aluno : ${listaAlunos}">
-									<td th:text="${aluno.matricula}"></td>
-									<td th:text="${aluno.nome}"></td>
-									<td th:text="${aluno.anoNascimento}"></td>
-									<td th:text="${aluno.telefone}"></td>
-									<td th:text="${aluno.email}"></td>
-									<td th:text="${aluno.turma.nome}"></td>
+							 	<tr th:each="ocorrencia : ${listaOcorrencias}">
+									<td th:text="${ocorrencia.titulo}"></td>
+									<td th:text="${ocorrencia.descricao}"></td>
+									<td th:text="${ocorrencia.dataHora}"></td>
+									<td th:text="${ocorrencia.aluno.nome}"></td>
+									<td th:text="${ocorrencia.status}"></td>
 									<td>
-										<form action="/aluno/listar-alunos">
+										<form action="/ocorrencia/listar-ocorrencias">
 											<input type="submit" class="btn btn-primary" name="nomeTurma" th:value="${aluno.ocorrencia}">
 										</form>
 									</td>
@@ -42,7 +37,6 @@
 					    	</tbody>
 						</table>
 						<a class="btn btn-primary" th:href="@{/turma}">Retornar</a>
-						<a class="btn btn-primary" th:href="@{/aluno/novo}">Adicionar aluno</a>
 		        	</div>
 		        </div>
             </div>

@@ -13,13 +13,22 @@ public class TurmaRepository {
 		turmas.add(new Turma("TSI", "1", 2019, 1));
 		turmas.add(new Turma("MECA", "2", 2019, 1));
 		turmas.add(new Turma("REDES", "3", 2019, 1));
-		turmas.add(new Turma("INFO", "4", 2019, 1));
-		
-		
+		turmas.add(new Turma("INFO", "4", 2019, 1));		
 	}
 
 	public ArrayList<Turma> getTurmas() {
 		return turmas;
+	}
+	
+	public Turma getTurmasEspecifica(String nomeTurma) {
+		for (Turma turma : turmas) {
+			if(turma.getNome().equalsIgnoreCase(nomeTurma)) {
+				System.out.println("turma encontrada");
+				return turma;
+			}
+		}
+		System.out.println("turma não encontrada");
+		return null;
 	}
 
 	public void setTurmas(ArrayList<Turma> turmas) {
@@ -27,7 +36,6 @@ public class TurmaRepository {
 	}
 	
 	public ArrayList<Turma> getAllTurmas(){
-		System.out.println(this.turmas);
 		return this.turmas;
 	}
 

@@ -15,6 +15,15 @@ public class Aluno {
 		super();
 	}
 
+	public Aluno(String matricula, String nome, int anoNascimento, String telefone, String email) {
+		super();
+		this.matricula = matricula;
+		this.nome = nome;
+		this.anoNascimento = anoNascimento;
+		this.telefone = telefone;
+		this.email = email;
+	}
+	
 	public Aluno(String matricula, String nome, int anoNascimento, String telefone, String email, Turma turma) {
 		super();
 		this.matricula = matricula;

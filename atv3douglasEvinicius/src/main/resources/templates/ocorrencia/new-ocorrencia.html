@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastrar Ocorrência</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	</head>
+	<body>
+        <div class="container">
+            <div class="row justify-content-center my-4">
+                <div class="col-10">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <div class="card-title">
+                            	<h1>Cadastrar Ocorrência</h1>
+                            </div>
+                        </div>
+                        <form th:action="@{/turma}" th:object="${ocorrencia}" method="POST"> <!-- MUDAR O TH:ACTION -->
+	                        <div class="card-body">
+	                            <label for="descricao">Descrição</label>
+	                            <input th:field="*{descricao}" class="form-control" type="text" id="nome" name="nome" value=""><br />
+	                            <label for="codigo">Data/hora</label>
+	                            <input th:field="*{dataHora}" class="form-control" type="text" id="codigo" name="codigo" value=""><br />
+	                            <label for="ano">Aluno</label>
+	                            <input th:field="*{aluno.nome}" class="form-control" type="number" id="ano" name="ano" value=""><br />
+	                            <label for="periodo">Status</label>
+	                            <input th:field="*{status}" class="form-control" type="number" id="periodo" name="periodo" value=""><br />
+	                        </div>
+	                        <div class="card-footer text-right">
+								<input type="submit" class="btn btn-primary" value="Cadastrar">
+                        	</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

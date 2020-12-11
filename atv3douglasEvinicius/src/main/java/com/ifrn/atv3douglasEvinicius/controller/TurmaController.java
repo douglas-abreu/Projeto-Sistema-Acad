@@ -32,7 +32,5 @@ public class TurmaController {
 	public String saveTurma(@ModelAttribute Turma turma) {
 		turmaRepository.save(turma);
 		return "redirect:turma";
-		
 	}
-	
 }

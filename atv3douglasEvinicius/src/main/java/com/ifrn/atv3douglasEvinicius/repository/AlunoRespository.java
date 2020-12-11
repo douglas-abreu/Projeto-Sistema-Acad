@@ -41,4 +41,8 @@ public class AlunoRespository {
 		}
 		return listaDetalhada;
 	}
+	
+	public void save(Aluno aluno) {
+		listaAlunos.add(aluno);
+	}
 }
