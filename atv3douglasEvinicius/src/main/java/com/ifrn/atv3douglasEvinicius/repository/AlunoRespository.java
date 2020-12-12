@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import com.ifrn.atv3douglasEvinicius.model.Aluno;
+import com.ifrn.atv3douglasEvinicius.model.Turma;
 
 @Repository
 public class AlunoRespository {
@@ -41,6 +42,18 @@ public class AlunoRespository {
 		}
 		return listaDetalhada;
 	}
+	
+	public Aluno getAlunosEspecifica(String nomeAluno) {
+		for (Aluno aluno : listaAlunos) {
+			if(aluno.getNome().equalsIgnoreCase(nomeAluno)) {
+				System.out.println("Aluno encontrada");
+				return aluno;
+			}
+		}
+		System.out.println("turma não encontrada");
+		return null;
+	}
+	
 	
 	public void save(Aluno aluno) {
 		listaAlunos.add(aluno);

@@ -34,8 +34,8 @@
 									<td th:text="${aluno.email}"></td>
 									<td th:text="${aluno.turma.nome}"></td>
 									<td>
-										<form action="/aluno/listar-alunos">
-											<input type="submit" class="btn btn-primary" name="nomeTurma" th:value="${aluno.ocorrencia}">
+										<form action="/ocorrencia/listar-ocorrencias">
+											<input type="submit" class="btn btn-primary" name="nomeAluno" th:value="${aluno.nome}">
 										</form>
 									</td>
 							  	</tr>
