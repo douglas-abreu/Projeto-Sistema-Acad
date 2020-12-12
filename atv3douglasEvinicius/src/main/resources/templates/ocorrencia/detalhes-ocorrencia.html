@@ -28,15 +28,12 @@
 									<td th:text="${ocorrencia.dataHora}"></td>
 									<td th:text="${ocorrencia.aluno.nome}"></td>
 									<td th:text="${ocorrencia.status}"></td>
-									<td>
-										<form action="/ocorrencia/listar-ocorrencias">
-											<input type="submit" class="btn btn-primary" name="nomeTurma" th:value="${aluno.ocorrencia}">
-										</form>
-									</td>
+									
 							  	</tr>
 					    	</tbody>
 						</table>
 						<a class="btn btn-primary" th:href="@{/turma}">Retornar</a>
+						<a class="btn btn-primary" th:href="@{/ocorrencia/novo}">Nova Ocorrência</a>
 		        	</div>
 		        </div>
             </div>

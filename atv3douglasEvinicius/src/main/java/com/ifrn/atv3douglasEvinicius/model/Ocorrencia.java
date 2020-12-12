@@ -1,11 +1,13 @@
 package com.ifrn.atv3douglasEvinicius.model;
 
+
 import java.util.Calendar;
+import java.util.Date;
 
 public class Ocorrencia {
 	private String titulo;
 	private String descricao;
-	private Calendar dataHora;
+	private Date dataHora;
 	private Aluno aluno;
 	private StatusOcorrencia status;
 	
@@ -14,7 +16,16 @@ public class Ocorrencia {
 		
 	}
 	
-	public Ocorrencia(String titulo, String descricao, Calendar dataHora, Aluno aluno, StatusOcorrencia status) {
+	public Ocorrencia(String titulo, String descricao, StatusOcorrencia status) {
+		super();
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.status = status;
+	}
+	
+
+	
+	public Ocorrencia(String titulo, String descricao, Date dataHora, Aluno aluno, StatusOcorrencia status) {
 		super();
 		this.titulo = titulo;
 		this.descricao = descricao;
@@ -22,6 +33,9 @@ public class Ocorrencia {
 		this.aluno = aluno;
 		this.status = status;
 	}
+
+	
+
 
 	public String getTitulo() {
 		return titulo;
@@ -39,12 +53,12 @@ public class Ocorrencia {
 		this.descricao = descricao;
 	}
 
-	public Calendar getDataHora() {
+	public Date getDataHora() {
 		return dataHora;
 	}
 
-	public void setDataHora(Calendar dataHora) {
-		this.dataHora = dataHora;
+	public void setDataHora(Date calendar) {
+		this.dataHora = calendar;
 	}
 
 	public Aluno getAluno() {

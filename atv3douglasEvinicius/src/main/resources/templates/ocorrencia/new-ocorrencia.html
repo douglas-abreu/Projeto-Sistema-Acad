@@ -15,16 +15,19 @@
                             	<h1>Cadastrar Ocorrência</h1>
                             </div>
                         </div>
-                        <form th:action="@{/turma}" th:object="${ocorrencia}" method="POST"> <!-- MUDAR O TH:ACTION -->
+                         <form th:action="@{/ocorrencia}"  method="POST"> 
 	                        <div class="card-body">
+	                            <label for="titulo">Título</label>
+	                            <input th:field="*{ocorrencia.titulo}" class="form-control" type="text" id="titulo" name="titulo"><br />
 	                            <label for="descricao">Descrição</label>
-	                            <input th:field="*{descricao}" class="form-control" type="text" id="nome" name="nome" value=""><br />
-	                            <label for="codigo">Data/hora</label>
-	                            <input th:field="*{dataHora}" class="form-control" type="text" id="codigo" name="codigo" value=""><br />
-	                            <label for="ano">Aluno</label>
-	                            <input th:field="*{aluno.nome}" class="form-control" type="number" id="ano" name="ano" value=""><br />
-	                            <label for="periodo">Status</label>
-	                            <input th:field="*{status}" class="form-control" type="number" id="periodo" name="periodo" value=""><br />
+	                            <input th:field="*{ocorrencia.descricao}" class="form-control" type="text" id="descricao" name="descricao"><br />
+	                            <label for="dataHora">Data/Hora</label>
+	                            <input class="form-control" type="date" id="dataOcorrencia" name="dataOcorrencia"><br />
+	                            <label for="nome">Nome Aluno:</label>
+	                            <input class="form-control" type="text" id="alunoOcorrencia" name="alunoOcorrencia"><br />
+	                            <label for="status">Status</label>
+	                            <input th:field="*{ocorrencia.status}" class="form-control" type="text" id="status" name="status"><br />
+		                  
 	                        </div>
 	                        <div class="card-footer text-right">
 								<input type="submit" class="btn btn-primary" value="Cadastrar">
