@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ifrn.atv3douglasEvinicius.model.Aluno;
 import com.ifrn.atv3douglasEvinicius.repository.AlunoRespository;
+import com.ifrn.atv3douglasEvinicius.repository.OcorrenciaRepository;
 import com.ifrn.atv3douglasEvinicius.repository.TurmaRepository;
 
 @Controller
@@ -20,6 +21,8 @@ public class AlunoController {
 	
 	@Autowired
 	private TurmaRepository turmaRepository;
+	
+	
 	
 	@GetMapping("/aluno/listar-alunos")
 	public String detalharAlunos(@RequestParam String nomeTurma,								
