@@ -52,18 +52,6 @@ private Calendar c;
 	}
 	
 	
-	public Date setDate(String date) {
-		String[] dateDiv = date.split("-");
-		ArrayList<Integer> data = new ArrayList<Integer>();
-		
-		for (int i = 0; i < dateDiv.length; i++) {
-			data.add(Integer.parseInt(String.valueOf(dateDiv[i])));
-		}
-		System.out.println(data.get(2));
-		// 		 ANO		 MES 			DIA
-		c.set(2019, 01, 16, 11, 13);
-		return c.getTime();
-	}
 	
 	
 	

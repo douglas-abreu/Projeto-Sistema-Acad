@@ -24,8 +24,6 @@ public class OcorrenciaController {
 	@Autowired
 	private AlunoRespository alunoRepository;
 	
-	
-	
 	@GetMapping("/ocorrencia/listar-ocorrencias")
 	public String detalharOcorrencias(@RequestParam String nomeAluno,								
 								Model model) {
@@ -49,7 +47,6 @@ public class OcorrenciaController {
 	
 	@PostMapping("/ocorrencia")
 	public String saveOcorrencia(@ModelAttribute Ocorrencia ocorrencia,
-			@RequestParam String dataOcorrencia,
 			@RequestParam String alunoOcorrencia,
 							Model model) {
 		System.out.println("entrou no POST de ocorrencia!");
