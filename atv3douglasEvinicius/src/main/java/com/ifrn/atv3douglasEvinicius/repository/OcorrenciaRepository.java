@@ -16,6 +16,7 @@ import com.ifrn.atv3douglasEvinicius.model.StatusOcorrencia;
 @Repository
 public class OcorrenciaRepository {
 private ArrayList<Ocorrencia> listaOcorrencias;
+private ArrayList<Ocorrencia> ocorrenciaStatus;
 private Calendar c;	
 
 
@@ -35,7 +36,12 @@ private Calendar c;
 		listaOcorrencias.add(new Ocorrencia("ATRASO","Aluno chegou faltando apenas 5min para o fim da aula",c.getTime(),alunoRepository.getAllAlunos().get(5),StatusOcorrencia.CANCELADA));
 	}
 	
-	
+
+	public StatusOcorrencia[] getAllOcorrenciaStatus(){
+		System.out.println(StatusOcorrencia.values());
+		return StatusOcorrencia.values();
+		
+	}
 	
 	public ArrayList<Ocorrencia> getAllOcorrencias(){
 		return listaOcorrencias;

@@ -28,7 +28,9 @@
 	                            <label for="email">E-mail</label>
 	                            <input th:field="${aluno.email}" class="form-control" type="text" id="email" name="email" value=""><br />
 	                            <label for="turmaAluno">Turma</label>
-	                            <input class="form-control" type="text" id="turmaAluno" name="turmaAluno" value=""><br />
+	                            <select id="codigo" name="codigo" class="form-control">
+								  <option th:each="turma : ${turmas}" th:text="${turma.codigo}">Turma</option>
+								</select>
 	                        </div>
 	                        <div class="card-footer text-right">
 								<input type="submit" class="btn btn-primary" value="Cadastrar">

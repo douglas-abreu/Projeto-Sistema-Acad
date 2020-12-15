@@ -10,19 +10,19 @@ public class TurmaRepository {
 
 	public TurmaRepository() {
 		turmas = new ArrayList<Turma>();
-		turmas.add(new Turma("TSI", "1", 2019, 1));
-		turmas.add(new Turma("MECA", "2", 2019, 1));
-		turmas.add(new Turma("REDES", "3", 2019, 1));
-		turmas.add(new Turma("INFO", "4", 2019, 1));		
+		turmas.add(new Turma("TSI", "TSI1", 2019, 1));
+		turmas.add(new Turma("MECA", "MECA2", 2019, 1));
+		turmas.add(new Turma("REDES", "REDES3", 2019, 1));
+		turmas.add(new Turma("INFO", "INFO4", 2019, 1));		
 	}
 
 	public ArrayList<Turma> getTurmas() {
 		return turmas;
 	}
 	
-	public Turma getTurmasEspecifica(String nomeTurma) {
+	public Turma getTurmasEspecifica(String codigoTurma) {
 		for (Turma turma : turmas) {
-			if(turma.getNome().equalsIgnoreCase(nomeTurma)) {
+			if(turma.getCodigo().equalsIgnoreCase(codigoTurma)) {
 				System.out.println("turma encontrada");
 				return turma;
 			}

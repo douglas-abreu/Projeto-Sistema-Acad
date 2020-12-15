@@ -42,6 +42,8 @@ public class OcorrenciaController {
 	@GetMapping("/ocorrencia/novo")
 	public String newAluno(Model model) {
 		model.addAttribute("ocorrencia", new Ocorrencia());
+		model.addAttribute("status",ocorrenciaRepository.getAllOcorrenciaStatus());
+		model.addAttribute("alunos",alunoRepository.getAllAlunos());
 		return "/ocorrencia/new-ocorrencia";
 	}
 	

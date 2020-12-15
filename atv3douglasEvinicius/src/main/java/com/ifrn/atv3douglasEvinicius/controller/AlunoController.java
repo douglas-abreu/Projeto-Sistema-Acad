@@ -25,25 +25,33 @@ public class AlunoController {
 	
 	
 	@GetMapping("/aluno/listar-alunos")
-	public String detalharAlunos(@RequestParam String nomeTurma,								
+	public String detalharAlunos(@RequestParam(required=false) String codigo,								
 								Model model) {
-			model.addAttribute("listaAlunos", alunoRepository.getAlunosTurma(nomeTurma));
-			model.addAttribute("turma", nomeTurma);
+			model.addAttribute("listaAlunos", alunoRepository.getAlunosTurma(codigo));
+			model.addAttribute("turma", turmaRepository.getTurmasEspecifica(codigo));
 			return "/aluno/detalhes-turma";
 	}
+	
+	@GetMapping("/aluno/listar-todos-alunos")
+	public String detalharTodosAlunos(Model model) {
+			model.addAttribute("listaAlunos", alunoRepository.getAllAlunos());
+			return "/aluno/list-all-alunos";
+	}
+	
 	
 	@GetMapping("/aluno/novo")
 	public String newAluno(Model model) {
 		model.addAttribute("aluno", new Aluno());
+		model.addAttribute("turmas", turmaRepository.getAllTurmas());
 		return "/aluno/new-aluno";
 	}
 	
 	@PostMapping("/aluno/listar-alunos")
 	public String saveAluno(@ModelAttribute Aluno aluno,
 							Model model,
-							@RequestParam String turmaAluno) {
-		aluno.setTurma(turmaRepository.getTurmasEspecifica(turmaAluno));
+							@RequestParam String codigo) {
+		aluno.setTurma(turmaRepository.getTurmasEspecifica(codigo));
 		alunoRepository.save(aluno);
-		return "redirect:/aluno/listar-alunos/?nomeTurma="+aluno.getTurma().getNome();
+		return "redirect:/aluno/listar-alunos/?codigo="+aluno.getTurma().getCodigo();
 	}
 }

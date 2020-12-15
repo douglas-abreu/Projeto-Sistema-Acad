@@ -15,13 +15,14 @@ public class Aluno {
 		super();
 	}
 
-	public Aluno(String matricula, String nome, int anoNascimento, String telefone, String email) {
+	public Aluno(String matricula, String nome, int anoNascimento, String telefone, String email, ArrayList<Ocorrencia> ocorrencia) {
 		super();
 		this.matricula = matricula;
 		this.nome = nome;
 		this.anoNascimento = anoNascimento;
 		this.telefone = telefone;
 		this.email = email;
+		this.ocorrencia = new ArrayList<Ocorrencia>();
 	}
 	
 	public Aluno(String matricula, String nome, int anoNascimento, String telefone, String email, Turma turma) {

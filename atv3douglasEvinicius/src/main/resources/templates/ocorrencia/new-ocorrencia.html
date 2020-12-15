@@ -15,17 +15,20 @@
                             	<h1>Cadastrar Ocorrência</h1>
                             </div>
                         </div>
-                         <form th:action="@{/ocorrencia}"  method="POST"> 
+                         <form th:action="@{/ocorrencia}"  method="POST" th:object="${ocorrencia}"> 
 	                        <div class="card-body">
 	                            <label for="titulo">Título</label>
-	                            <input th:field="*{ocorrencia.titulo}" class="form-control" type="text" id="titulo" name="titulo"><br />
+	                            <input th:field="*{titulo}" class="form-control" type="text" id="titulo" name="titulo"><br />
 	                            <label for="descricao">Descrição</label>
-	                            <input th:field="*{ocorrencia.descricao}" class="form-control" type="text" id="descricao" name="descricao"><br />
+	                            <input th:field="*{descricao}" class="form-control" type="text" id="descricao" name="descricao"><br />
 	                            <label for="nome">Nome Aluno:</label>
-	                            <input class="form-control" type="text" id="alunoOcorrencia" name="alunoOcorrencia"><br />
+	                            <select id="alunoOcorrencia" name="alunoOcorrencia" class="form-control">
+								  <option th:each="aluno : ${alunos}" th:text="${aluno.nome}">Status</option>
+							 	</select>
 	                            <label for="status">Status</label>
-	                            <input th:field="*{ocorrencia.status}" class="form-control" type="text" id="status" name="status"><br />
-		                  
+		                 		 <select id="status" name="status" class="form-control">
+								  <option th:each="statusResponse : ${status}" th:text="${statusResponse}">Status</option>
+							 	</select>
 	                        </div>
 	                        <div class="card-footer text-right">
 								<input type="submit" class="btn btn-primary" value="Cadastrar">

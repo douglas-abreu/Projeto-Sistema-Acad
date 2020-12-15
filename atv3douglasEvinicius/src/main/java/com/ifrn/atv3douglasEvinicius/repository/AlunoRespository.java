@@ -33,10 +33,10 @@ public class AlunoRespository {
 		return this.listaAlunos;
 	}
 
-	public ArrayList<Aluno> getAlunosTurma(String nomeTurma) {
+	public ArrayList<Aluno> getAlunosTurma(String codigoTurma) {
 		ArrayList<Aluno> listaDetalhada = new ArrayList<Aluno>();
 		for (Aluno aluno : listaAlunos) {
-			if(aluno.getTurma().getNome().equalsIgnoreCase(nomeTurma)) {
+			if(aluno.getTurma().getCodigo().equalsIgnoreCase(codigoTurma)) {
 				listaDetalhada.add(aluno);
 			}
 		}
