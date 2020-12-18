@@ -29,16 +29,17 @@
                 <div class="col-12">
 		        	<div>	
 		        		<h1 class="text-center my-4" >Alunos</h1>
-		        		<table class="table">
+		        		<table class="table table-bordered">
 					    	<thead class="thead-dark">
 								<tr>
-									<th scope="col">Matricula</th>
-									<th scope="col">Nome</th>
-									<th scope="col">Ano de Nascimento</th>
-									<th scope="col">Telefone</th>
-									<th scope="col">E-mail</th>
-									<th scope="col">Turma</th>									
-									<th scope="col">Ocorrências</th>
+									<th class="text-center" scope="col">Matricula</th>
+									<th class="text-center" scope="col">Nome</th>
+									<th class="text-center" scope="col">Ano de Nascimento</th>
+									<th class="text-center" scope="col">Telefone</th>
+									<th class="text-center" scope="col">E-mail</th>
+									<th class="text-center" scope="col">Turma</th>									
+									<th class="text-center" scope="col">Ocorrências</th>
+									<th class="text-center" scope="col">Ações</th>
 							    </tr>
 						     </thead>
 							 <tbody>
@@ -48,13 +49,19 @@
 									<td th:text="${aluno.anoNascimento}"></td>
 									<td th:text="${aluno.telefone}"></td>
 									<td th:text="${aluno.email}"></td>
-									<td th:text="${aluno.turma.nome}"></td>
-									<td>
+									<td th:text="${aluno.turma.codigo}"></td>
+									<td class="text-center">
 										<form action="/ocorrencia/listar-ocorrencias">
 										<!-- ${#lists.size(aluno.ocorrencia)} -->
-											<input type="submit" class="btn btn-danger" th:value="Ocorrencias" >
-											<input th:value="${aluno.nome}" name="nomeAluno" hidden> 												
+											<input type="submit" class="btn btn-warning" th:value="Ocorrências" >
+											<input th:value="${aluno.matricula}" name="matricula" hidden> 												
 										</form>
+									</td>
+									<td class="text-center">
+										<div class="d-inline p-2">
+											<a class="btn btn-danger" th:href="@{/aluno/deletar/__${turma.codigo}__/__${aluno.matricula}__}">Deletar</a>
+											<a class="btn btn-secondary" th:href="@{/aluno/atualizar/__${aluno.matricula}__}">Atualizar</a>
+										</div>
 									</td>
 							  	</tr>
 					    	</tbody>

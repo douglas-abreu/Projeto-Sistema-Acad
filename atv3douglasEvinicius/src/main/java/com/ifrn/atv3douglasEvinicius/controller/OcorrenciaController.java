@@ -25,9 +25,9 @@ public class OcorrenciaController {
 	private AlunoRespository alunoRepository;
 	
 	@GetMapping("/ocorrencia/listar-ocorrencias")
-	public String detalharOcorrencias(@RequestParam String nomeAluno,								
+	public String detalharOcorrencias(@RequestParam String matricula,								
 								Model model) {
-			model.addAttribute("listaOcorrencias", ocorrenciaRepository.getOcorrenciaPerAluno( nomeAluno));
+			model.addAttribute("listaOcorrencias", ocorrenciaRepository.getOcorrenciaPerAluno(matricula));
 			//model.addAttribute("turma", nomeOcorrencia);
 			return "/ocorrencia/detalhes-ocorrencia";
 	}

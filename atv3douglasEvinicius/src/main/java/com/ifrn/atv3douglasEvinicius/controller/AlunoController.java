@@ -5,12 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.ifrn.atv3douglasEvinicius.model.Aluno;
 import com.ifrn.atv3douglasEvinicius.repository.AlunoRespository;
-import com.ifrn.atv3douglasEvinicius.repository.OcorrenciaRepository;
 import com.ifrn.atv3douglasEvinicius.repository.TurmaRepository;
 
 @Controller
@@ -21,8 +20,6 @@ public class AlunoController {
 	
 	@Autowired
 	private TurmaRepository turmaRepository;
-	
-	
 	
 	@GetMapping("/aluno/listar-alunos")
 	public String detalharAlunos(@RequestParam(required=false) String codigo,								
@@ -38,7 +35,6 @@ public class AlunoController {
 			return "/aluno/list-all-alunos";
 	}
 	
-	
 	@GetMapping("/aluno/novo")
 	public String newAluno(Model model) {
 		model.addAttribute("aluno", new Aluno());
@@ -53,5 +49,12 @@ public class AlunoController {
 		aluno.setTurma(turmaRepository.getTurmasEspecifica(codigo));
 		alunoRepository.save(aluno);
 		return "redirect:/aluno/listar-alunos/?codigo="+aluno.getTurma().getCodigo();
+	}
+	
+	@GetMapping("/aluno/deletar/{codigo}/{matricula}")
+	public String deleteAluno(@PathVariable("matricula") String matricula,
+							  @PathVariable("codigo") String codigo) {
+		alunoRepository.getAllAlunos().remove(alunoRepository.getAlunosEspecifica(matricula));
+		return "redirect:/aluno/listar-alunos/?codigo="+codigo;
 	}
 }

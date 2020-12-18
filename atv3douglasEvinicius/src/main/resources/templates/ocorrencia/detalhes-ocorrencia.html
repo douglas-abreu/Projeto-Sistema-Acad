@@ -11,15 +11,15 @@
                 <div class="col-12">
 		        	<div>
 		        		<h1 class="text-center my-4" >Ocorrências</h1>
-		        		<table class="table">
+		        		<table class="table table-bordered">
 					    	<thead class="thead-dark">
 								<tr>
-									<th scope="col">ID</th>
-									<th scope="col">Título</th>
-									<th scope="col">Descrição</th>
-									<th scope="col">Data/hora</th>
-									<th scope="col">Aluno</th>
-									<th scope="col">Status</th>
+									<th class="text-center" scope="col">ID</th>
+									<th class="text-center" scope="col">Título</th>
+									<th class="text-center" scope="col">Descrição</th>
+									<th class="text-center"scope="col">Data/hora</th>
+									<th class="text-center"scope="col">Aluno</th>
+									<th class="text-center"scope="col">Status</th>
 							    </tr>
 						     </thead>
 							 <tbody>
@@ -33,7 +33,7 @@
 							  	</tr>
 					    	</tbody>
 						</table>
-						<a class="btn btn-primary" th:href="@{/aluno/listar-todos-alunos}">Retornar</a>
+						<a class="btn btn-primary" th:href="@{/turma}">Retornar</a>
 						<a class="btn btn-primary" th:href="@{/ocorrencia/novo}">Nova Ocorrência</a>
 		        	</div>
 		        </div>

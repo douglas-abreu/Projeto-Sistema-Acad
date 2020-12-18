@@ -47,20 +47,15 @@ int count = 31;
 		return listaOcorrencias;
 	}
 	
-	public ArrayList<Ocorrencia> getOcorrenciaPerAluno(String nomeOcorrencia) {
+	public ArrayList<Ocorrencia> getOcorrenciaPerAluno(String matricula) {
 		ArrayList<Ocorrencia> listaDetalhada = new ArrayList<Ocorrencia>();
 		for (Ocorrencia ocorr : listaOcorrencias) {
-			if(ocorr.getAluno().getNome().equalsIgnoreCase(nomeOcorrencia)) {
+			if(ocorr.getAluno().getMatricula().equalsIgnoreCase(matricula)) {
 				listaDetalhada.add(ocorr);
 			}
 		}
 		return listaDetalhada;
 	}
-	
-	
-	
-	
-	
 
 	public void save(Ocorrencia ocorr) {
 		count = count + 1;
@@ -68,5 +63,4 @@ int count = 31;
 		listaOcorrencias.add(ocorr);
 
 	}
-	
 }

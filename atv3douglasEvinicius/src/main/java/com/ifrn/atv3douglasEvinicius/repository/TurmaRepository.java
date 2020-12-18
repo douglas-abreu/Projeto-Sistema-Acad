@@ -29,13 +29,14 @@ public class TurmaRepository {
 		return null;
 	}
 
-	public void deleteTurma(String codigoTurma) {
+	public ArrayList<Turma> deleteTurma(String codigoTurma) {
 		for (Turma turma : turmas) {
 			if(turma.getCodigo().equalsIgnoreCase(codigoTurma)) {
 				turmas.remove(turma);
+				return turmas;
 			}
 		}
-		
+		return null;
 	}
 	
 	public void setTurmas(ArrayList<Turma> turmas) {
