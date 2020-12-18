@@ -14,6 +14,7 @@
 		        		<table class="table">
 					    	<thead class="thead-dark">
 								<tr>
+									<th scope="col">ID</th>
 									<th scope="col">Título</th>
 									<th scope="col">Descrição</th>
 									<th scope="col">Data/hora</th>
@@ -23,6 +24,7 @@
 						     </thead>
 							 <tbody>
 							 	<tr th:each="ocorrencia : ${listaOcorrencias}">
+							 		<td th:text="${ocorrencia.id}"></td>
 									<td th:text="${ocorrencia.titulo}"></td>
 									<td th:text="${ocorrencia.descricao}"></td>
 									<td th:text="${ocorrencia.dataHora}"></td>
