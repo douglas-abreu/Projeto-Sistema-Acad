@@ -23,14 +23,21 @@ public class TurmaRepository {
 	public Turma getTurmasEspecifica(String codigoTurma) {
 		for (Turma turma : turmas) {
 			if(turma.getCodigo().equalsIgnoreCase(codigoTurma)) {
-				System.out.println("turma encontrada");
 				return turma;
 			}
 		}
-		System.out.println("turma não encontrada");
 		return null;
 	}
 
+	public void deleteTurma(String codigoTurma) {
+		for (Turma turma : turmas) {
+			if(turma.getCodigo().equalsIgnoreCase(codigoTurma)) {
+				turmas.remove(turma);
+			}
+		}
+		
+	}
+	
 	public void setTurmas(ArrayList<Turma> turmas) {
 		this.turmas = turmas;
 	}
