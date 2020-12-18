@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Ocorrencia {
+	private int id;
 	private String titulo;
 	private String descricao;
 	private Date dataHora;
@@ -25,8 +26,9 @@ public class Ocorrencia {
 	
 
 	
-	public Ocorrencia(String titulo, String descricao, Date dataHora, Aluno aluno, StatusOcorrencia status) {
+	public Ocorrencia(int id, String titulo, String descricao, Date dataHora, Aluno aluno, StatusOcorrencia status) {
 		super();
+		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.dataHora = dataHora;
@@ -35,7 +37,13 @@ public class Ocorrencia {
 	}
 
 	
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getTitulo() {
 		return titulo;
