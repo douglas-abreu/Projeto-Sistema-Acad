@@ -60,7 +60,7 @@
 									<td class="text-center">
 										<div class="d-inline p-2">
 											<a class="btn btn-danger" th:href="@{/aluno/deletar/__${turma.codigo}__/__${aluno.matricula}__}">Deletar</a>
-											<a class="btn btn-secondary" th:href="@{/aluno/atualizar/__${aluno.matricula}__}">Atualizar</a>
+											<a class="btn btn-secondary" th:href="@{/aluno/editar/__${aluno.matricula}__}">Editar</a>
 										</div>
 									</td>
 							  	</tr>
@@ -68,6 +68,7 @@
 						</table>
 						<a class="btn btn-primary" th:href="@{/turma}">Retornar</a>
 						<a class="btn btn-primary" th:href="@{/aluno/novo}">Adicionar aluno</a>
+						<div th:if="${msg}" th:text="${msg}" class="alert alert-success mt-2"></div>
 		        	</div>
 		        </div>
             </div>

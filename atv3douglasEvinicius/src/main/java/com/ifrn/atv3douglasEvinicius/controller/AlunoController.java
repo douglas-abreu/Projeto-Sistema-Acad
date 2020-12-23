@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.ifrn.atv3douglasEvinicius.model.Aluno;
 import com.ifrn.atv3douglasEvinicius.repository.AlunoRespository;
 import com.ifrn.atv3douglasEvinicius.repository.TurmaRepository;
@@ -45,10 +47,20 @@ public class AlunoController {
 	@PostMapping("/aluno/listar-alunos")
 	public String saveAluno(@ModelAttribute Aluno aluno,
 							Model model,
-							@RequestParam String codigo) {
+							@RequestParam String codigo,
+							@RequestParam(required = false) String edit,
+							RedirectAttributes redirect) {
 		aluno.setTurma(turmaRepository.getTurmasEspecifica(codigo));
-		alunoRepository.save(aluno);
-		return "redirect:/aluno/listar-alunos/?codigo="+aluno.getTurma().getCodigo();
+		if(edit == null) {
+			alunoRepository.save(aluno);
+			redirect.addFlashAttribute("msg", "Aluno "+aluno.getNome()+" adicionada com sucesso!");
+		}else {
+			alunoRepository.atualizar(aluno);
+			System.out.println("Chegou no controller");
+			redirect.addFlashAttribute("msg", "Aluno "+aluno.getNome()+" atualizado com sucesso!");
+		}
+		
+		return "redirect:/aluno/listar-alunos/?codigo="+codigo;
 	}
 	
 	@GetMapping("/aluno/deletar/{codigo}/{matricula}")
@@ -56,5 +68,13 @@ public class AlunoController {
 							  @PathVariable("codigo") String codigo) {
 		alunoRepository.getAllAlunos().remove(alunoRepository.getAlunosEspecifica(matricula));
 		return "redirect:/aluno/listar-alunos/?codigo="+codigo;
+	}
+	
+	@GetMapping("/aluno/editar/{matricula}")
+	public String editarTurma(@PathVariable("matricula") String matricula,
+							  Model model) {
+		model.addAttribute("aluno", alunoRepository.getAlunosEspecifica(matricula));
+		model.addAttribute("turmas", turmaRepository.getAllTurmas());
+		return "/aluno/new-aluno";
 	}
 }

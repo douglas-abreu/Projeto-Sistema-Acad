@@ -12,22 +12,27 @@
                     <div class="card">
                         <div class="card-header text-center">
                             <div class="card-title">
-                            	<h1>Cadastrar Turma</h1>
+                            	<h1><span th:if="${turma.codigo} == null">Cadastrar Turma</span></h1>
+                            	<h1><span th:unless="${turma.codigo} == null">Editar Turma</span></h1>
                             </div>
                         </div>
                         <form th:action="@{/turma}" th:object="${turma}" method="POST">
 	                        <div class="card-body">
+	                        	<input type="hidden" th:if="*{codigo}" name="edit" value="editando">
 	                            <label for="num1">Nome</label>
-	                            <input th:field="*{nome}" class="form-control" type="text" id="nome" name="nome" value=""><br />
-	                            <label for="num2">Código</label>
-	                            <input th:field="*{codigo}" class="form-control" type="text" id="codigo" name="codigo" value=""><br />
-	                            <label for="num2">Ano</label>
-	                            <input th:field="*{ano}" class="form-control" type="number" id="ano" name="ano" value=""><br />
-	                            <label for="num2">Período</label>
-	                            <input th:field="*{periodo}" class="form-control" type="number" id="periodo" name="periodo" value=""><br />
+	                            <input th:field="*{nome}" class="form-control" type="text" id="nome" name="nome" value="">
+	                            <label class="mt-4" for="num2">Código</label>
+	                            <input th:field="*{codigo}" th:if="${turma.codigo} == null" class="form-control" type="text" id="codigo" name="codigo" value="">
+	                            <input th:unless="${turma.codigo} == null" th:value="*{codigo}" class="form-control" type="text" id="codigo" disabled>
+	                            <label class="mt-4" for="num2">Ano</label>
+	                            <input th:field="*{ano}" class="form-control" type="number" id="ano" name="ano" value="">
+	                            <label class="mt-4" for="num2">Período</label>
+	                            <input th:field="*{periodo}" class="form-control" type="number" id="periodo" name="periodo" value="">
+	                            <input th:unless="${turma.codigo} == null" th:field="*{codigo}" class="form-control" type="text" id="codigo" style="visibility: hidden;">
 	                        </div>
 	                        <div class="card-footer text-right">
-								<input type="submit" class="btn btn-primary" value="Cadastrar">
+	                        	<input type="submit" class="btn btn-primary" th:if="${turma.codigo} == null" value="Cadastrar">
+								<input type="submit" class="btn btn-primary" th:unless="${turma.codigo} == null" value="Atualizar">
                         	</div>
                         </form>
                     </div>

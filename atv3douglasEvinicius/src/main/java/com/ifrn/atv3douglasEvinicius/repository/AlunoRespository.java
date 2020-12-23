@@ -1,11 +1,8 @@
 package com.ifrn.atv3douglasEvinicius.repository;
 
 import java.util.ArrayList;
-
 import org.springframework.stereotype.Repository;
-
 import com.ifrn.atv3douglasEvinicius.model.Aluno;
-import com.ifrn.atv3douglasEvinicius.model.Turma;
 
 @Repository
 public class AlunoRespository {
@@ -54,5 +51,15 @@ public class AlunoRespository {
 	
 	public void save(Aluno aluno) {
 		listaAlunos.add(aluno);
+	}
+
+	public void atualizar(Aluno aluno) {
+		Aluno novoAluno = getAlunosEspecifica(aluno.getMatricula());
+		novoAluno.setMatricula(aluno.getMatricula());
+		novoAluno.setNome(aluno.getNome());
+		novoAluno.setAnoNascimento(aluno.getAnoNascimento());
+		novoAluno.setTelefone(aluno.getTelefone());
+		novoAluno.setEmail(aluno.getEmail());
+		novoAluno.setTurma(aluno.getTurma());
 	}
 }

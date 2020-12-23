@@ -50,4 +50,12 @@ public class TurmaRepository {
 	public void save(Turma turma) {
 		turmas.add(turma);
 	}
+
+	public void atualizar(Turma turma) {
+		Turma turmaNova = getTurmasEspecifica(turma.getCodigo());
+		turmaNova.setCodigo(turma.getCodigo());
+		turmaNova.setAno(turma.getAno());
+		turmaNova.setNome(turma.getNome());
+		turmaNova.setPeriodo(turma.getPeriodo());
+	}
 }

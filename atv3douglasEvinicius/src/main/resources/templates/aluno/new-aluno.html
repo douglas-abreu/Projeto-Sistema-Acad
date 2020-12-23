@@ -12,28 +12,34 @@
                     <div class="card">
                         <div class="card-header text-center">
                             <div class="card-title">
-                            	<h1>Cadastrar Aluno</h1>
+                            	<h1><span th:if="${aluno.matricula} == null">Cadastrar Aluno</span></h1>
+                            	<h1><span th:unless="${aluno.matricula} == null">Editar Aluno</span></h1>
                             </div>
                         </div>
-                        <form th:action="@{/aluno/listar-alunos}"  method="POST">
+                        <form th:action="@{/aluno/listar-alunos}" th:object="${aluno}"  method="POST">
 	                        <div class="card-body">
+	                        	<input type="hidden" th:if="${aluno.matricula}" name="edit" value="editando">
 	                            <label for="matricula">Matrícula</label>
-	                            <input th:field="${aluno.matricula}" class="form-control" type="text" id="matricula" name="matricula" value=""><br />
-	                            <label for="nome">Nome</label>
-	                            <input th:field="${aluno.nome}" class="form-control" type="text" id="nome" name="nome" value=""><br />
-	                            <label for="anoNascimento">Ano de Nascimento</label>
-	                            <input th:field="${aluno.anoNascimento}" class="form-control" type="text" id="anoNascimento" name="anoNascimento" value=""><br />
-	                            <label for="telefone">Telefone</label>
-	                            <input th:field="${aluno.telefone}" class="form-control" type="text" id="telefone" name="telefone" value=""><br />
-	                            <label for="email">E-mail</label>
-	                            <input th:field="${aluno.email}" class="form-control" type="text" id="email" name="email" value=""><br />
-	                            <label for="turmaAluno">Turma</label>
-	                            <select id="codigo" name="codigo" class="form-control">
+	                            <input th:field="*{matricula}" class="form-control" type="text" id="matricula" name="matricula" value="">
+	                            <label class="mt-4" for="nome">Nome</label>
+	                            <input th:field="*{nome}" class="form-control" type="text" id="nome" name="nome" value="">
+	                            <label class="mt-4" for="anoNascimento">Ano de Nascimento</label>
+	                            <input th:field="*{anoNascimento}" class="form-control" type="text" id="anoNascimento" name="anoNascimento" value="">
+	                            <label class="mt-4" for="telefone">Telefone</label>
+	                            <input th:field="*{telefone}" class="form-control" type="text" id="telefone" name="telefone" value="">
+	                            <label class="mt-4" for="email">E-mail</label>
+	                            <input th:field="*{email}" class="form-control" type="text" id="email" name="email" value="">
+	                            <label class="mt-4" for="turmaAluno">Turma</label>
+	                            <select th:if="${aluno.turma}" id="codigo" name="codigo" class="form-control">
+								  <option th:each="turma : ${turmas}" th:selected="${aluno.turma.codigo == turma.codigo}" th:text="${turma.codigo}">Turma</option>
+								</select>
+								<select th:unless="${aluno.turma}" id="codigo" name="codigo" class="form-control">
 								  <option th:each="turma : ${turmas}" th:text="${turma.codigo}">Turma</option>
 								</select>
 	                        </div>
 	                        <div class="card-footer text-right">
-								<input type="submit" class="btn btn-primary" value="Cadastrar">
+								<input th:if="${aluno.matricula} == null" type="submit" class="btn btn-primary" value="Cadastrar">
+								<input th:unless="${aluno.matricula} == null" type="submit" class="btn btn-primary" value="Atualizar">
                         	</div>
                         </form>
                     </div>

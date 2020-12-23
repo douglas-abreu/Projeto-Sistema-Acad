@@ -33,14 +33,15 @@
 												<input type="submit" class="btn btn-primary" th:value="Detalhar">
 												<input th:value="${turma.codigo}" name="codigo" hidden> 
 											</form>
-											<a class="btn btn-danger" th:href="@{/turma/deletar/__${turma.codigo}__}">Deletar</a>
-											<a class="btn btn-secondary" th:href="@{/turma/atualizar/__${turma.codigo}__}">Atualizar</a>
+											<a class="btn btn-danger" th:href="@{/turma/deletar/__${turma.codigo}__}" onclick="return confirm('Tem certeza?')">Deletar</a>
+											<a class="btn btn-secondary" th:href="@{/turma/editar/__${turma.codigo}__}">Editar</a>
 										</div>
 									</td>
 							  	</tr>
 					    	</tbody>
 						</table>
 						<a class="btn btn-primary" th:href="@{/turma/novo}">Nova turma</a>
+						<div th:if="${msg}" th:text="${msg}" class="alert alert-success mt-2"></div>
 		        	</div>
 		        </div>
             </div>
