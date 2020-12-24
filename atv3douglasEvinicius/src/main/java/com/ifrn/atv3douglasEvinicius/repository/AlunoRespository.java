@@ -49,6 +49,16 @@ public class AlunoRespository {
 		return null;
 	}
 	
+	public Aluno getAlunoNome(String nome) {
+		for (Aluno aluno : listaAlunos) {
+			if(aluno.getNome().equalsIgnoreCase(nome)) {
+				return aluno;
+			}
+		}
+		return null;
+	}
+	
+	
 	public void save(Aluno aluno) {
 		listaAlunos.add(aluno);
 	}

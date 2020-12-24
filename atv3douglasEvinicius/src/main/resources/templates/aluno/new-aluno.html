@@ -20,7 +20,7 @@
 	                        <div class="card-body">
 	                        	<input type="hidden" th:if="${aluno.matricula}" name="edit" value="editando">
 	                            <label for="matricula">Matrícula</label>
-	                            <input th:field="*{matricula}" class="form-control" type="text" id="matricula" name="matricula" value="">
+	                            <input  class="form-control" type="text" id="matricula" name="matricula" th:value="*{matricula}" disabled>
 	                            <label class="mt-4" for="nome">Nome</label>
 	                            <input th:field="*{nome}" class="form-control" type="text" id="nome" name="nome" value="">
 	                            <label class="mt-4" for="anoNascimento">Ano de Nascimento</label>
@@ -36,6 +36,7 @@
 								<select th:unless="${aluno.turma}" id="codigo" name="codigo" class="form-control">
 								  <option th:each="turma : ${turmas}" th:text="${turma.codigo}">Turma</option>
 								</select>
+								 <input th:unless="${aluno.matricula} == null" th:field="*{matricula}" class="form-control" type="text" id="matricula" style="visibility: hidden;">
 	                        </div>
 	                        <div class="card-footer text-right">
 								<input th:if="${aluno.matricula} == null" type="submit" class="btn btn-primary" value="Cadastrar">

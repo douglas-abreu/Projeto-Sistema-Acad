@@ -12,26 +12,37 @@
                     <div class="card">
                         <div class="card-header text-center">
                             <div class="card-title">
-                            	<h1>Cadastrar Ocorrência</h1>
+                            	<h1><span th:if="${ocorrencia.id} == null">Editar Ocorrencia</span></h1>
+                            	<h1><span th:unless="${ocorrencia.id} == null">Cadastrar Ocorrencia</span></h1>
                             </div>
                         </div>
                          <form th:action="@{/ocorrencia}"  method="POST" th:object="${ocorrencia}"> 
 	                        <div class="card-body">
+	                        	<input type="hidden" th:if="${ocorrencia.id}" name="edit" value="editando">
 	                            <label for="titulo">Título</label>
-	                            <input th:field="*{titulo}" class="form-control" type="text" id="titulo" name="titulo"><br />
+	                            <input  th:field="*{titulo}" class="form-control" type="text" id="titulo" name="titulo"><br />
 	                            <label for="descricao">Descrição</label>
 	                            <input th:field="*{descricao}" class="form-control" type="text" id="descricao" name="descricao"><br />
+	                            <input type="hidden" th:field="*{id}" name="id" th:if="${ocorrencia.id}">
 	                            <label for="nome">Nome Aluno:</label>
-	                            <select id="alunoOcorrencia" name="alunoOcorrencia" class="form-control">
+	                            <select th:if="${ocorrencia.id}" id="alunoSelected" name="alunoSelected" class="form-control">
+								  <option th:each="aluno : ${alunos}" th:selected="${ocorrencia.aluno.nome == aluno.nome}" th:text="${aluno.nome}">Status</option>
+							 	</select>
+							 	<select th:unless="${ocorrencia.id}" id="alunoSelected" name="alunoSelected" class="form-control">
 								  <option th:each="aluno : ${alunos}" th:text="${aluno.nome}">Status</option>
 							 	</select>
 	                            <label for="status">Status</label>
-		                 		 <select id="status" name="status" class="form-control">
+		                 		<select th:if="${ocorrencia.id}" id="status" name="status" class="form-control">
+								  <option th:each="statusResponse : ${status}" th:selected="${ocorrencia.status == statusResponse}" th:text="${statusResponse}">Status</option>
+							 	</select>
+							 	<select th:unless="${ocorrencia.id}" id="status" name="status" class="form-control">
 								  <option th:each="statusResponse : ${status}" th:text="${statusResponse}">Status</option>
 							 	</select>
 	                        </div>
 	                        <div class="card-footer text-right">
-								<input type="submit" class="btn btn-primary" value="Cadastrar">
+								<input th:if="${ocorrencia.id} == null" type="submit" class="btn btn-primary" value="Atualizar">
+								<input th:unless="${ocorrencia.id} == null" type="submit" class="btn btn-primary" value="Cadastrar">
+                        		<div th:if="${msg}" th:text="${msg}" class="alert alert-success mt-2"></div>
                         	</div>
                         </form>
                     </div>

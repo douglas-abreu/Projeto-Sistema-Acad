@@ -59,7 +59,7 @@
 									</td>
 									<td class="text-center">
 										<div class="d-inline p-2">
-											<a class="btn btn-danger" th:href="@{/aluno/deletar/__${turma.codigo}__/__${aluno.matricula}__}">Deletar</a>
+											<a class="btn btn-danger" th:href="@{/aluno/deletar/__${turma.codigo}__/__${aluno.matricula}__}" onclick="return confirm('Tem certeza?')">Deletar</a>
 											<a class="btn btn-secondary" th:href="@{/aluno/editar/__${aluno.matricula}__}">Editar</a>
 										</div>
 									</td>

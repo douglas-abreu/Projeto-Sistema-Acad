@@ -31,11 +31,6 @@ public class AlunoController {
 			return "/aluno/detalhes-turma";
 	}
 	
-	@GetMapping("/aluno/listar-todos-alunos")
-	public String detalharTodosAlunos(Model model) {
-			model.addAttribute("listaAlunos", alunoRepository.getAllAlunos());
-			return "/aluno/list-all-alunos";
-	}
 	
 	@GetMapping("/aluno/novo")
 	public String newAluno(Model model) {
@@ -56,7 +51,6 @@ public class AlunoController {
 			redirect.addFlashAttribute("msg", "Aluno "+aluno.getNome()+" adicionada com sucesso!");
 		}else {
 			alunoRepository.atualizar(aluno);
-			System.out.println("Chegou no controller");
 			redirect.addFlashAttribute("msg", "Aluno "+aluno.getNome()+" atualizado com sucesso!");
 		}
 		
@@ -65,16 +59,22 @@ public class AlunoController {
 	
 	@GetMapping("/aluno/deletar/{codigo}/{matricula}")
 	public String deleteAluno(@PathVariable("matricula") String matricula,
-							  @PathVariable("codigo") String codigo) {
-		alunoRepository.getAllAlunos().remove(alunoRepository.getAlunosEspecifica(matricula));
+							  @PathVariable("codigo") String codigo,
+							  RedirectAttributes redirect) {
+		Aluno aluno = alunoRepository.getAlunosEspecifica(matricula);
+		alunoRepository.getAllAlunos().remove(aluno);
+		redirect.addFlashAttribute("msg", "Aluno(a) "+aluno.getNome()+" deletado(a) com sucesso!");
 		return "redirect:/aluno/listar-alunos/?codigo="+codigo;
 	}
 	
 	@GetMapping("/aluno/editar/{matricula}")
 	public String editarTurma(@PathVariable("matricula") String matricula,
-							  Model model) {
+							  Model model,
+							  RedirectAttributes redirect) {
+		Aluno aluno = alunoRepository.getAlunosEspecifica(matricula);
 		model.addAttribute("aluno", alunoRepository.getAlunosEspecifica(matricula));
 		model.addAttribute("turmas", turmaRepository.getAllTurmas());
+		redirect.addFlashAttribute("msg", "Aluno(a) "+aluno.getNome()+" atualizado(a) com sucesso!");
 		return "/aluno/new-aluno";
 	}
 }

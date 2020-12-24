@@ -57,10 +57,35 @@ int count = 31;
 		return listaDetalhada;
 	}
 
+	public Ocorrencia getOcorrenciaEspecifica(int id) {
+		for(Ocorrencia ocorr : listaOcorrencias) {
+			if(ocorr.getId() == id) {
+				return ocorr;
+			}
+		}
+		return null;
+	}
+	
 	public void save(Ocorrencia ocorr) {
 		count = count + 1;
 		ocorr.setId(count);
 		listaOcorrencias.add(ocorr);
+
+	}
+	
+	public void atualizar(Ocorrencia ocorr) {
+		Ocorrencia novaOcorr = getOcorrenciaEspecifica(ocorr.getId());
+		novaOcorr.setTitulo(ocorr.getTitulo());
+		System.out.println(ocorr.getTitulo());
+		novaOcorr.setDescricao(ocorr.getDescricao());
+		System.out.println(ocorr.getDescricao());
+		novaOcorr.setAluno(ocorr.getAluno());
+		System.out.println(ocorr.getAluno());
+		novaOcorr.setStatus(ocorr.getStatus());
+		System.out.println(ocorr.getStatus());
+		novaOcorr.setId(ocorr.getId());
+		System.out.println(ocorr.getId());
+		
 
 	}
 }
