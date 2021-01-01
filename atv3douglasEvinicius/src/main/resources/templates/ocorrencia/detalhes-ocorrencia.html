@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	</head>
 	<body>
+	<div th:insert="~{/layout/navbar :: navbar}"></div>
         <div class="container">
             <div class="row justify-content-center my-4">
                 <div class="col-12">
@@ -33,8 +34,10 @@
 									<td th:text="${ocorrencia.status}"></td>
 									<td class="text-center">
 										<div class="d-inline p-2">
+										<div class="btn-group" role="group" aria-label="Basic example">
 											<a class="btn btn-danger" th:href="@{/ocorrencia/deletar/__${ocorrencia.id}__}" onclick="return confirm('Tem certeza?')">Deletar</a>
 											<a class="btn btn-secondary" th:href="@{/ocorrencia/editar/__${ocorrencia.id}__}">Editar</a>
+										</div>
 										</div>
 									</td>
 							  	</tr>

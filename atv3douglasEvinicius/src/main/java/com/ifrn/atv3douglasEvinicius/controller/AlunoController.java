@@ -30,8 +30,7 @@ public class AlunoController {
 			model.addAttribute("turma", turmaRepository.getTurmasEspecifica(codigo));
 			return "/aluno/detalhes-turma";
 	}
-	
-	
+		
 	@GetMapping("/aluno/novo")
 	public String newAluno(Model model) {
 		model.addAttribute("aluno", new Aluno());

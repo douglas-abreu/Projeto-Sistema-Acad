@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Usuários</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	</head>
+	<body>
+	<div th:insert="~{/layout/navbar :: navbar}"></div>
+        <div class="container">
+            <div class="row justify-content-center my-4">
+                <div class="col-8">
+		        	<div>
+		        		<h1 class="text-center my-4" >Usuários</h1>
+		        		<table class="table table-bordered">
+					    	<thead class="thead-dark">
+								<tr>
+									<th class="text-center" scope="col">Id</th>
+									<th class="text-center" scope="col">Nome</th>
+									<th class="text-center" scope="col">Email</th>
+									<th class="text-center" scope="col">Login</th>		
+									<th class="text-center" scope="col">Senha</th>							
+							    </tr>
+						     </thead>
+							 <tbody>
+							 	<tr th:each="user : ${listaUsuarios}">
+									<td th:text="${user.id}"></td>
+									<td th:text="${user.nome}"></td>
+									<td th:text="${user.email}"></td>
+									<td th:text="${user.login}"></td>
+									<td th:text="${user.senha}"></td>
+							  	</tr>
+					    	</tbody>
+						</table>
+						<a class="btn btn-primary" th:href="@{/usuario/novo}">Novo Usuário</a>
+		        	</div>
+		        </div>
+            </div>
+        </div>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

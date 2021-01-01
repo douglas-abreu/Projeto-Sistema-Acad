@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastrar Usuário</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	</head>
+	<body>
+	<div th:insert="~{/layout/navbar :: navbar}"></div>
+        <div class="container">
+            <div class="row justify-content-center my-4">
+                <div class="col-10">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <div class="card-title">
+                            	<h1><span>Cadastrar Usuário</span></h1>
+                            </div>
+                        </div>
+                         <form th:action="@{/usuario/listar-usuarios}"  method="POST" th:object="${usuario}"> 
+	                        <div class="card-body">
+	                            <label for="titulo">Nome</label>
+	                            <input  th:field="*{nome}" class="form-control" type="text" id="nome" name="nome"><br />
+	                            <label for="email">Email</label>
+	                            <input th:field="*{email}" class="form-control" type="text" id="email" name="email"><br />
+	                            <input type="hidden" th:field="*{id}" name="id">
+	                            <label for="login">Nome Usuário:</label>
+	                            <input th:field="*{login}" class="form-control" type="text" id="login" name="login"><br />
+	                            <label for="senha">Senha:</label>
+	                            <input th:field="*{senha}" class="form-control" type="text" id="senha" name="senha"><br />
+							 	<label for="funcao">Função:</label>
+							 	<select id="funcao" name="funcao" class="form-control">
+								  <option th:each="funcaoResponse : ${funcao}" th:text="${funcaoResponse}">Função</option>
+							 	</select>
+	                        </div>
+	                        <div class="card-footer text-right">
+								<input type="submit" class="btn btn-primary" value="Cadastrar">
+                        		<div th:if="${msg}" th:text="${msg}" class="alert alert-success mt-2"></div>
+                        	</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
