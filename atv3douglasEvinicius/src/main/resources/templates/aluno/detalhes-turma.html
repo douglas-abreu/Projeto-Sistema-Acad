@@ -40,7 +40,7 @@
 									<th class="text-center" scope="col">E-mail</th>
 									<th class="text-center" scope="col">Turma</th>									
 									<th class="text-center" scope="col">Ocorrências</th>
-									<th class="text-center" scope="col">Ações</th>
+									<th class="text-center" scope="col" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">Ações</th>
 							    </tr>
 						     </thead>
 							 <tbody>
@@ -58,7 +58,7 @@
 											<input th:value="${aluno.matricula}" name="matricula" hidden> 												
 										</form>
 									</td>
-									<td class="text-center">
+									<td class="text-center" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">
 										<div class="d-inline p-2">
 											<a class="btn btn-danger" th:href="@{/aluno/deletar/__${turma.codigo}__/__${aluno.matricula}__}" onclick="return confirm('Tem certeza?')">Deletar</a>
 											<a class="btn btn-secondary" th:href="@{/aluno/editar/__${aluno.matricula}__}">Editar</a>
@@ -68,7 +68,7 @@
 					    	</tbody>
 						</table>
 						<a class="btn btn-primary" th:href="@{/turma}">Retornar</a>
-						<a class="btn btn-primary" th:href="@{/aluno/novo}">Adicionar aluno</a>
+						<a class="btn btn-primary" th:href="@{/aluno/novo}" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">Adicionar aluno</a>
 						<div th:if="${msg}" th:text="${msg}" class="alert alert-success mt-2"></div>
 		        	</div>
 		        </div>

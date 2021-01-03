@@ -21,7 +21,7 @@
 									<th class="text-center"scope="col">Data/hora</th>
 									<th class="text-center"scope="col">Aluno</th>
 									<th class="text-center"scope="col">Status</th>
-									<th class="text-center"scope="col">Ações</th>
+									<th class="text-center"scope="col" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">Ações</th>
 							    </tr>
 						     </thead>
 							 <tbody>
@@ -32,7 +32,7 @@
 									<td th:text="${ocorrencia.dataHora}"></td>
 									<td th:text="${ocorrencia.aluno.nome}"></td>
 									<td th:text="${ocorrencia.status}"></td>
-									<td class="text-center">
+									<td class="text-center" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">
 										<div class="d-inline p-2">
 										<div class="btn-group" role="group" aria-label="Basic example">
 											<a class="btn btn-danger" th:href="@{/ocorrencia/deletar/__${ocorrencia.id}__}" onclick="return confirm('Tem certeza?')">Deletar</a>
@@ -44,7 +44,7 @@
 					    	</tbody>
 						</table>
 						<a class="btn btn-primary" th:href="@{/turma}">Retornar</a>
-						<a class="btn btn-primary" th:href="@{/ocorrencia/novo}">Nova Ocorrência</a>
+						<a class="btn btn-primary" th:href="@{/ocorrencia/novo}" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">Nova Ocorrência</a>
 		        		<div th:if="${msg}" th:text="${msg}" class="alert alert-success mt-2"></div>
 		        	</div>
 		        </div>

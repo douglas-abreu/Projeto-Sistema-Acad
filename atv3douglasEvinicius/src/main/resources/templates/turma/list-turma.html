@@ -28,20 +28,22 @@
 									<td th:text="${turma.codigo}"></td>
 									<td th:text="${turma.ano}"></td>
 									<td th:text="${turma.periodo}"></td>
-									<td class="text-center">
+									<td class="text-center" >
 										<div class="d-inline p-2">
 											<form class="d-inline" action="/aluno/listar-alunos" method="GET">
 												<input type="submit" class="btn btn-primary" th:value="Detalhar">
 												<input th:value="${turma.codigo}" name="codigo" hidden> 
 											</form>
-											<a class="btn btn-danger" th:href="@{/turma/deletar/__${turma.codigo}__}" onclick="return confirm('Tem certeza?')">Deletar</a>
-											<a class="btn btn-secondary" th:href="@{/turma/editar/__${turma.codigo}__}">Editar</a>
+											<a class="btn btn-danger" th:href="@{/turma/deletar/__${turma.codigo}__}" onclick="return confirm('Tem certeza?')"
+											th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">Deletar</a>
+											<a class="btn btn-secondary" th:href="@{/turma/editar/__${turma.codigo}__}"
+											th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">Editar</a>
 										</div>
 									</td>
 							  	</tr>
 					    	</tbody>
 						</table>
-						<a class="btn btn-primary" th:href="@{/turma/novo}">Nova turma</a>
+						<a class="btn btn-primary" th:href="@{/turma/novo}" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}">Nova turma</a>
 						<div th:if="${msg}" th:text="${msg}" class="alert alert-success mt-2"></div>
 		        	</div>
 		        </div>

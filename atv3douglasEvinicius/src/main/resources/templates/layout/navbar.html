@@ -20,7 +20,7 @@
 		    <div class="navbar-nav">
 		      <a class="nav-link" th:href="@{/turma}">Turmas</a>
 		      <a class="nav-link" th:href="@{/ocorrencia}">Ocorrências</a>
-		      <a class="nav-link" th:if="${session.userLocal.funcao == T(com.ifrn.atv3douglasEvinicius.model.Papel).ADMIN}" th:href="@{/usuario/listar-usuarios}">Usuários</a>
+		      <a class="nav-link" th:if="${session.userLocal.funcao != T(com.ifrn.atv3douglasEvinicius.model.Papel).USER}" th:href="@{/usuario/listar-usuarios}">Usuários</a>
 		    </div>
 		  </div>
 		   <span class="text-white mr-5">Olá, <span th:text="${session.userLocal.nome}"></span></span>

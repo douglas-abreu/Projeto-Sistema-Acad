@@ -34,7 +34,7 @@
 							  	</tr>
 					    	</tbody>
 						</table>
-						<a class="btn btn-primary" th:href="@{/usuario/novo}">Novo Usuário</a>
+						<a class="btn btn-primary" th:href="@{/usuario/novo}" th:if="${session.userLocal.funcao == T(com.ifrn.atv3douglasEvinicius.model.Papel).ADMIN}">Novo Usuário</a>
 		        	</div>
 		        </div>
             </div>
