@@ -72,4 +72,11 @@ public class AlunoRespository {
 		novoAluno.setEmail(aluno.getEmail());
 		novoAluno.setTurma(aluno.getTurma());
 	}
+	
+	
+	/*================================= MÉTODOS API ===========================*/
+	public void delete(Aluno aluno) {
+		listaAlunos.remove(aluno);
+	}
+
 }

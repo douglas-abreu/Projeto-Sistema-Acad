@@ -88,4 +88,9 @@ int count = 31;
 		
 
 	}
+	
+	/*=================================== MÉTODOS API ===============================*/
+	public void delete(Ocorrencia ocorr) {
+		listaOcorrencias.remove(ocorr);
+	}
 }

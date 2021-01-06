@@ -58,4 +58,15 @@ public class TurmaRepository {
 		turmaNova.setNome(turma.getNome());
 		turmaNova.setPeriodo(turma.getPeriodo());
 	}
+	
+	/*=========================MÉTODOS API========================*/
+	public ArrayList<Turma> getApiTurmas() {
+		ArrayList<Turma> t = this.turmas;
+		for (int i = 0; i < turmas.size(); i++) {
+			t.get(i).setAluno(null);
+		}
+		return t;
+	}
+	
+	
 }
